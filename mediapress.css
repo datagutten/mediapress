@@ -1,0 +1,48 @@
+/*The gallery CSS is copied from RDP Wiki-Press Embed by Robert D Payne
+@charset "utf-8";
+/* CSS Document */
+
+/* The backgrounds for galleries. */
+#content .gallerybox div.thumb {
+    background-color: #F9F9F9;   /* Light gray padding */
+}
+
+/* Put a chequered background behind images, only visible if they have transparency */
+.gallerybox .thumb img,
+#file img {
+    background: white url("//upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png") repeat;
+}
+
+/* But not on articles, user pages, portals or with opt-out. */
+.ns-0 .gallerybox .thumb img,
+.ns-2 .gallerybox .thumb img,
+.ns-100 .gallerybox .thumb img, 
+.nochecker .gallerybox .thumb img {
+    background: white;
+}
+
+.wiki-embed .gallery {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.gallerybox {
+	list-style: none;
+	float: left;
+	text-align: center;
+}
+
+/*.entry-title {
+	display:none;	
+}*/
+
+/* Hide the widget area */
+.widget-area {
+	display: none;
+}
+
+img {
+	vertical-align:  middle;
+}
