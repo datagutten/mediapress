@@ -1,26 +1,24 @@
 <?Php
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /*
-Plugin Name: mediapress
+Plugin Name: Wikiembedder
 Plugin URI:  http://URI_Of_Page_Describing_Plugin_and_Updates
-Description: This describes my plugin in a short sentence
+Description: Embed MediaWiki in a wordpress site and allow users to navigate the wiki without leaving your wordpress page.
 Version:     0.1
 Author:      Anders Birkenes
 Author URI:  https://github.com/datagutten
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Domain Path: /languages
-Text Domain: mediapress
 */
 
-class mediapress {
+class wikiembedder {
 	public $ch;
 	public $wikiurl; //Full url to the wiki
 	public $wikidir; //Wiki subdir to be used a source for relative link rewriting
 	public $page;
 	function __construct() {
 		$this->ch = curl_init();
-		curl_setopt( $this->ch, CURLOPT_USERAGENT, 'Mediapress/0.1 (https://github.com/datagutten/mediapress)' );
+		curl_setopt( $this->ch, CURLOPT_USERAGENT, 'Wikiembedder/0.1 (https://github.com/datagutten/wikiembedder)' );
 		curl_setopt( $this->ch, CURLOPT_ENCODING, "UTF-8" );
 		curl_setopt( $this->ch, CURLOPT_RETURNTRANSFER, true );
 
@@ -37,7 +35,7 @@ class mediapress {
 	function init() {
 		add_shortcode( 'wiki', array($this, 'shortcode') );
 		add_action( 'template_redirect', array( $this, 'get_page' ) );
-		wp_enqueue_style( 'wiki-embed-style', plugins_url( '/mediapress/mediapress.css' ), false, $this->version, 'screen' );
+		wp_enqueue_style( 'wiki-embed-style', plugins_url( '/wikiembedder/wikiembedder.css' ), false, $this->version, 'screen' );
 	}
 
 	//Do a HTTP GET request with the correct useragent
@@ -158,4 +156,4 @@ class mediapress {
 		$wp_query->queried_object = $post; // this helps remove some errors 
 	}
 }
-$mediapress=new mediapress();
+$wikiembedder=new wikiembedder();
